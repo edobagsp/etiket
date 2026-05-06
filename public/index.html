@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESDRUPARAYA - Premium IT Support</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Floating Navigation -->
+    <nav class="nav-container">
+        <div class="nav-item active" onclick="switchSection('dashboard')" title="Beranda">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </div>
+        <div class="nav-item" onclick="switchSection('tickets')" title="Tiket">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><line x1="13" y1="5" x2="13" y2="19"></line></svg>
+        </div>
+        <div class="nav-item" onclick="switchSection('maintenance')" title="Mainten">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        </div>
+        <div class="nav-item" onclick="switchSection('feedback')" title="Feedback">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
+        </div>
+        <div class="nav-item" onclick="switchSection('settings')" title="Setting">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </div>
+    </nav>
+
+    <div class="app-wrapper">
+        <header class="premium-header">
+            <div class="brand-section">
+                <h1 data-key="brand">ESDRUPARAYA</h1>
+                <p style="color: var(--text-muted); font-weight: 500;" data-key="subtitle">Intelligent IT Management</p>
+            </div>
+            <div class="header-actions" style="display: flex; gap: 12px;">
+                <button class="premium-btn" onclick="openLocationModal()">+ Buat Tiket Baru</button>
+                <button id="admin-login-btn" class="premium-btn" style="background: transparent; border: 2px solid var(--accent); color: var(--accent);" onclick="toggleAdmin()">Login Admin</button>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <div id="section-dashboard" class="app-section active">
+            <!-- RFID Attendance Tap Area (Moved to Home) -->
+            <div class="glass-card" style="margin-bottom: 40px; padding: 24px; border: 2px solid var(--accent-soft); text-align: center;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <div style="background: var(--accent-soft); padding: 16px; border-radius: 16px; border: 1px dashed var(--accent);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                            <line x1="6" y1="8" x2="6" y2="8"></line>
+                            <line x1="10" y1="8" x2="18" y2="8"></line>
+                            <line x1="10" y1="12" x2="18" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div style="text-align: left;">
+                        <h3 style="margin: 0; color: var(--accent);">Silakan Tap Kartu RFID</h3>
+                        <p style="margin: 4px 0 0; color: var(--text-muted); font-size: 0.85rem;">Tempelkan kartu Anda untuk Absen Masuk/Pulang</p>
+                    </div>
+                    <div style="position: relative; width: 200px; height: 40px; background: var(--glass-bg); border-radius: 8px; border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Scan Ready...</span>
+                        <input type="text" id="att-rfid" style="position: absolute; opacity: 0; inset: 0; width: 100%; cursor: pointer;" autofocus onblur="if(!isModalOpen()) this.focus()">
+                    </div>
+                </div>
+                <div id="att-result" style="display: none; margin-top: 16px; animation: slideUp 0.4s ease;"></div>
+            </div>
+
+            <!-- Attendance Log (Dashboard) -->
+            <section id="dashboard-attendance-log" style="margin-bottom: 40px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+                    <h3 style="margin: 0; font-weight: 800; font-size: 1.5rem;">Riwayat Absensi Terkini</h3>
+                    <button class="premium-btn" style="padding: 8px 16px; font-size: 0.85rem; background: #4F46E5;" onclick="switchSection('attendance-report')">📋 Laporan / Filter Absen</button>
+                </div>
+                <div class="glass-card" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow-x: auto;">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Nama Pegawai</th>
+                                <th>Worker Type</th>
+                                <th>Lokasi</th>
+                                <th>Status</th>
+                                <th>Waktu Tap</th>
+                            </tr>
+                        </thead>
+                        <tbody id="att-log-table">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="stats-row">
+                <div class="glass-card stat-box">
+                    <p class="stat-label" data-key="stat-active">Active Tickets</p>
+                    <h2 id="stat-active-val" style="font-size: 2.5rem; margin-top: 8px;">0</h2>
+                </div>
+                <div class="glass-card stat-box">
+                    <p class="stat-label" data-key="stat-waiting">Overdue Maintenance</p>
+                    <h2 id="stat-overdue-val" style="font-size: 2.5rem; margin-top: 8px; color: var(--accent);">0</h2>
+                </div>
+                <div class="glass-card stat-box">
+                    <p class="stat-label" data-key="stat-closed">Total Assets</p>
+                    <h2 id="stat-assets-val" style="font-size: 2.5rem; margin-top: 8px; color: #10B981;">0</h2>
+                </div>
+            </section>
+
+
+            <section class="ticket-feed">
+                <h3 style="margin-bottom: 24px; font-weight: 800; font-size: 1.5rem;" data-key="recent-activity">Recent
+                    Activity</h3>
+                <div class="glass-card" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow-x: auto;">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Issue</th>
+                                <th>Office</th>
+                                <th>User</th>
+                                <th>Date</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashboard-ticket-list">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <!-- Feedback Preview (Dashboard) -->
+            <section style="margin-top: 48px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <h3 style="font-weight: 800; font-size: 1.5rem;">Feedback Terbaru</h3>
+                    <button class="premium-btn" style="padding: 8px 16px; font-size: 0.85rem;" onclick="switchSection('feedback')">Lihat Semua</button>
+                </div>
+                <div id="dashboard-feedback-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                    <!-- Rendered by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Attendance Report Section -->
+        <div id="section-attendance-report" class="app-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; flex-wrap:wrap; gap:12px;">
+                <div>
+                    <h2 style="margin:0;">Laporan Absensi</h2>
+                    <p style="margin:4px 0 0; color:var(--text-muted); font-size:0.9rem;">Filter dan cetak rekapitulasi absensi bulanan.</p>
+                </div>
+                <div>
+                    <button class="premium-btn" style="background:#4F46E5;" onclick="printAttendanceReport()">🖨️ Print PDF</button>
+                </div>
+            </div>
+
+            <div class="glass-card" style="margin-bottom:24px; display:flex; gap:16px; flex-wrap:wrap; align-items:flex-end;">
+                <div>
+                    <label class="premium-label" style="display:block; margin-bottom:8px;">Bulan & Tahun</label>
+                    <input type="month" id="report-month" class="premium-input" style="width:auto;" onchange="renderAttendanceReport()">
+                </div>
+                <div>
+                    <label class="premium-label" style="display:block; margin-bottom:8px;">Lokasi</label>
+                    <select id="report-location" class="premium-input" style="width:auto;" onchange="renderAttendanceReport()">
+                        <option value="Semarang">Semarang</option>
+                        <option value="Makassar">Makassar</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="premium-label" style="display:block; margin-bottom:8px;">Worker Type</label>
+                    <select id="report-worker-type" class="premium-input" style="width:auto;" onchange="renderAttendanceReport()">
+                        <option value="Staff">Staff</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Internship">Internship</option>
+                        <option value="PC Render">PC Render / Extend</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="glass-card printable-area" id="printable-report" style="padding:0; background:transparent; border:none; box-shadow:none; overflow-x:auto;">
+                <!-- table -->
+            </div>
+        </div>
+
+        <div id="section-tickets" class="app-section">
+            <div id="ticket-filters" class="location-filters" style="margin-bottom: 24px; display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="filter-pill active" onclick="filterTickets('all', this)">Semua Tiket</button>
+                <div style="width: 2px; background: var(--glass-border); margin: 0 5px;"></div>
+                <button class="filter-pill" onclick="filterTickets('Semarang', this)">Semarang</button>
+                <button class="filter-pill" onclick="filterTickets('Makassar', this)">Makassar</button>
+                <div style="width: 2px; background: var(--glass-border); margin: 0 5px;"></div>
+                <button class="filter-pill" onclick="filterTickets('Hardware', this)">Hardware</button>
+                <button class="filter-pill" onclick="filterTickets('Software', this)">Software</button>
+                <button class="filter-pill" onclick="filterTickets('Network', this)">Network</button>
+                <button class="filter-pill" onclick="filterTickets('Other', this)">Lain-lain</button>
+
+            </div>
+            <div id="ticket-list-container" class="glass-card" style="padding: 0; background: transparent; border: none; box-shadow: none;">
+                <h3 style="margin-bottom: 24px;">Daftar Tiket Antrean</h3>
+                <table class="premium-table">
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Issue</th>
+                            <th>Office</th>
+                            <th>User</th>
+                            <th>Date & Time</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>PIC</th>
+                            <th class="admin-only" style="display: none;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tickets-table-body">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Maintenance Section -->
+        <div id="section-maintenance" class="app-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; flex-wrap:wrap; gap:12px;">
+                <div>
+                    <h2 style="margin:0;">Maintenance Schedule</h2>
+                    <p style="margin:4px 0 0; color:var(--text-muted); font-size:0.9rem;">Target: semua PC optimal dalam 4 bulan &mdash; Makassar 4 PC/hari &bull; Semarang 2 PC/hari</p>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <span id="mnt-overdue-badge" style="background:#FEE2E2; color:#EF4444; font-weight:700; padding:8px 18px; border-radius:20px; font-size:0.85rem;">⚠ 0 Overdue</span>
+                    <span id="mnt-done-badge" style="background:#ECFDF5; color:#10B981; font-weight:700; padding:8px 18px; border-radius:20px; font-size:0.85rem;">✅ 0 Done Today</span>
+                </div>
+            </div>
+
+            <!-- Jadwal Hari Ini -->
+            <div class="glass-card" style="margin-bottom:28px; border-left:6px solid var(--accent);">
+                <h3 style="margin-bottom:6px;">📅 Jadwal Hari Ini</h3>
+                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:16px;" id="mnt-today-label">Memuat jadwal...</p>
+                <div id="daily-schedule-list" style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="glass-card" style="margin-bottom:28px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                    <span style="font-weight:700;">Progress Maintenance Keseluruhan</span>
+                    <span id="mnt-progress-pct" style="font-weight:800; color:var(--accent);">0%</span>
+                </div>
+                <div style="background:#E2E8F0; border-radius:99px; height:12px; overflow:hidden;">
+                    <div id="mnt-progress-bar" style="height:100%; border-radius:99px; background:linear-gradient(90deg,#4F46E5,#7C3AED); width:0%; transition:width 0.6s ease;"></div>
+                </div>
+                <div style="display:flex; gap:24px; margin-top:12px; font-size:0.85rem; color:var(--text-muted);" id="mnt-loc-stats"></div>
+            </div>
+
+            <!-- Filter -->
+            <div class="location-filters" style="margin-bottom:20px; display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="filter-pill active" onclick="filterMaintenance('all',this)">Semua Overdue</button>
+                <button class="filter-pill" onclick="filterMaintenance('Semarang',this)">Semarang</button>
+                <button class="filter-pill" onclick="filterMaintenance('Makassar',this)">Makassar</button>
+            </div>
+
+            <!-- Overdue Table -->
+            <div class="glass-card" style="padding:0; background:transparent; border:none; box-shadow:none; overflow-x:auto;">
+                <table class="premium-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>No PC / ID</th>
+                            <th>Nama Staff</th>
+                            <th>Lokasi</th>
+                            <th>Worker Type</th>
+                            <th>Terakhir Maintenance</th>
+                            <th>Keterlambatan</th>
+                            <th id="mnt-action-th" style="display:none;">Checklist</th>
+                        </tr>
+                    </thead>
+                    <tbody id="maintenance-table-body">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+                <p id="mnt-empty-msg" style="text-align:center; padding:32px; color:var(--text-muted); display:none;">🎉 Semua PC sudah dalam kondisi optimal!</p>
+            </div>
+        </div>
+
+        <!-- Settings Section (Admin Only Hub) -->
+        <div id="section-settings" class="app-section">
+            <div style="margin-bottom: 32px;">
+                <h2>⚙️ Pengaturan Sistem</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Kelola Staff, Asset, dan Jadwal Maintenance dari sini.</p>
+            </div>
+
+            <!-- Settings Tabs -->
+            <div class="location-filters" style="margin-bottom: 24px; display: flex; gap: 10px; flex-wrap: wrap; border-bottom: 1px solid var(--glass-border); padding-bottom: 16px;">
+                <button class="filter-pill active" onclick="switchSettingTab('staff', this)">Manajemen Staff</button>
+                <button class="filter-pill" onclick="switchSettingTab('assets', this)">Manajemen Asset</button>
+                <button class="filter-pill" onclick="switchSettingTab('planning', this)">Master Jadwal</button>
+            </div>
+
+            <!-- Tab Content: Staff -->
+            <div id="tab-staff" class="setting-tab-content active">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <h3>Daftar Staff RFID</h3>
+                    <button id="add-staff-btn" class="premium-btn" style="display: none;" onclick="openStaffModal()">+ Tambah Staff</button>
+                </div>
+                <div class="glass-card" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow-x: auto;">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>RFID</th>
+                                <th>Nama</th>
+                                <th>Lokasi</th>
+                                <th>Worker Type</th>
+                                <th>Masa Kerja</th>
+                                <th id="staff-action-th" style="display: none;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-table-body">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab Content: Assets -->
+            <div id="tab-assets" class="setting-tab-content" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <h3>Asset & User Management</h3>
+                    <div id="asset-admin-btns" style="display: none; gap: 12px;">
+                        <button class="premium-btn" onclick="openAddAssetModal()">+ Tambah Asset</button>
+                        <button class="premium-btn" style="background: #10B981;" onclick="document.getElementById('excel-upload').click()">📂 Upload Excel</button>
+                        <button class="premium-btn" style="background: #EF4444;" onclick="resetDatabase()">🗑 Reset Database</button>
+                        <input type="file" id="excel-upload" style="display: none;" accept=".xlsx, .xls, .csv" onchange="handleExcelUpload(event)">
+                    </div>
+                </div>
+
+                <div class="glass-card" style="margin-bottom: 24px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <input type="text" id="asset-search" class="premium-input" style="flex:1; min-width: 200px;" placeholder="🔍 Cari PC ID, User, atau Lokasi..." onkeyup="debouncedAssetSearch()">
+                    <select id="asset-page-size" class="premium-input" style="width:80px; margin-top:0; padding:8px 12px;" onchange="assetCurrentPage=1; renderAssets()">
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+
+                <div class="glass-card" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow-x: auto;">
+                    <table class="premium-table" style="min-width: 1100px;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>PC ID</th>
+                                <th>Nama Staff</th>
+                                <th>Lokasi</th>
+                                <th>Worker Type</th>
+                                <th>Type</th>
+                                <th>CPU</th>
+                                <th>RAM</th>
+                                <th>GPU</th>
+                                <th>SSD M2</th>
+                                <th>HDD 1</th>
+                                <th id="asset-action-th" style="display: none;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="assets-table-body">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="asset-pagination" style="display:flex; justify-content:center; align-items:center; gap:12px; margin-top:28px; flex-wrap:wrap;">
+                    <button id="pg-first" onclick="goAssetPage(1)" class="premium-btn" style="padding: 8px 16px; background: white; color: var(--primary); border: 1px solid var(--glass-border);">&laquo; First</button>
+                    <button id="pg-prev" onclick="goAssetPage(assetCurrentPage - 1)" class="premium-btn" style="padding: 8px 16px; background: white; color: var(--primary); border: 1px solid var(--glass-border);">&lsaquo; Prev</button>
+                    <div id="pg-numbers" style="display:flex; gap:6px;"></div>
+                    <button id="pg-next" onclick="goAssetPage(assetCurrentPage + 1)" class="premium-btn" style="padding: 8px 16px; background: white; color: var(--primary); border: 1px solid var(--glass-border);">Next &rsaquo;</button>
+                    <button id="pg-last" onclick="goAssetPage(assetTotalPages)" class="premium-btn" style="padding: 8px 16px; background: white; color: var(--primary); border: 1px solid var(--glass-border);">Last &raquo;</button>
+                    <div id="pg-info" style="margin-left: 16px; font-size: 0.9rem; color: var(--text-muted); font-weight: 600;"></div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Planning -->
+            <div id="tab-planning" class="setting-tab-content" style="display: none;">
+                <div style="margin-bottom: 24px;">
+                    <h3>Master Jadwal Maintenance</h3>
+                    <p style="margin:4px 0 0; color:var(--text-muted); font-size:0.9rem;">Atur jadwal mulai April - Juni 2026 secara manual.</p>
+                </div>
+
+
+                <div class="glass-card" style="margin-bottom: 24px; display: flex; gap: 16px;">
+                    <input type="text" id="schedule-search" class="premium-input" placeholder="🔍 Cari PC ID, Staff, atau Lokasi..." onkeyup="renderSchedule()">
+                    <select id="schedule-filter-status" class="premium-input" style="max-width:200px;" onchange="renderSchedule()">
+                        <option value="all">Semua Status</option>
+                        <option value="Scheduled">Scheduled</option>
+                        <option value="Non-Scheduled">Non-Scheduled</option>
+                    </select>
+                </div>
+
+                <div class="glass-card" style="padding:0; background:transparent; border:none; box-shadow:none; overflow-x:auto;">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>PC ID / ID</th>
+                                <th>Nama Staff</th>
+                                <th>Lokasi</th>
+                                <th>Status Jadwal</th>
+                                <th class="admin-only">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedule-table-body">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="setting-admin-msg" style="display: block; text-align: center; padding: 60px; color: var(--text-muted);">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 16px; opacity: 0.5;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <h3>Akses Terbatas</h3>
+                <p>Silakan Login Admin untuk mengelola pengaturan sistem.</p>
+            </div>
+        </div>
+
+        <!-- Feedback Section -->
+        <div id="section-feedback" class="app-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
+                <div>
+                    <h2>💬 Feedback & Review</h2>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Suara Anda membantu kami meningkatkan layanan IT Support.</p>
+                </div>
+                <button class="premium-btn" onclick="openFeedbackModal()">+ Berikan Feedback</button>
+            </div>
+
+            <div id="feedback-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px;">
+                <!-- Rendered by JS -->
+            </div>
+
+            <!-- Admin Feedback Moderation -->
+            <div id="admin-feedback-section" style="display: none; margin-top: 60px; border-top: 1px solid var(--glass-border); padding-top: 40px;">
+                <h3 style="margin-bottom: 24px;">🛡️ Moderasi Feedback (Admin Only)</h3>
+                <div class="glass-card" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow-x: auto;">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Comment</th>
+                                <th>Rating</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-feedback-table">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Edit Asset Modal -->
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width:700px;">
+            <h3 style="margin-bottom: 24px;">Edit Asset Details</h3>
+            <form id="edit-form" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <input type="hidden" id="edit-asset-id">
+                <div><label class="premium-label">PC ID</label><input type="text" id="edit-pc-id" class="premium-input"></div>
+                <div><label class="premium-label">Nama Staff</label><input type="text" id="edit-nama-staff" class="premium-input"></div>
+                <div><label class="premium-label">Lokasi</label>
+                    <select id="edit-location" class="premium-input">
+                        <option value="Semarang">Semarang</option>
+                        <option value="Makassar">Makassar</option>
+                    </select>
+                </div>
+                <div><label class="premium-label">Worker Type</label>
+                    <select id="edit-worker-type" class="premium-input">
+                        <option value="Staff">Staff</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Internship">Internship</option>
+                        <option value="PC Render">PC Render</option>
+                    </select>
+                </div>
+                <div><label class="premium-label">Type</label><input type="text" id="edit-type" class="premium-input"></div>
+                <div><label class="premium-label">CPU</label><input type="text" id="edit-cpu" class="premium-input"></div>
+                <div><label class="premium-label">RAM</label><input type="text" id="edit-ram" class="premium-input"></div>
+                <div><label class="premium-label">GPU</label><input type="text" id="edit-gpu" class="premium-input"></div>
+                <div><label class="premium-label">SSD M2</label><input type="text" id="edit-ssd" class="premium-input"></div>
+                <div><label class="premium-label">HDD 1</label><input type="text" id="edit-hdd" class="premium-input"></div>
+                <div style="grid-column:span 2; display:flex; gap:12px; justify-content:flex-end; margin-top:8px;">
+                    <button type="button" class="premium-btn" style="background:#E2E8F0;color:var(--primary);" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="premium-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Location Selection Modal -->
+    <div id="location-modal" class="modal-overlay">
+        <div class="modal-content" style="text-align: center;">
+            <h3 style="margin-bottom: 32px;">Pilih Lokasi Kantor</h3>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <button class="premium-btn" style="padding: 20px; font-size: 1.2rem;" onclick="selectLocation('Semarang')">KANTOR SEMARANG</button>
+                <button class="premium-btn" style="padding: 20px; font-size: 1.2rem; background: var(--accent);" onclick="selectLocation('Makassar')">KANTOR MAKASSAR</button>
+            </div>
+            <button class="premium-btn" style="margin-top: 24px; background: #E2E8F0; color: var(--primary); width: 100%;" onclick="closeLocationModal()">Batal</button>
+        </div>
+    </div>
+
+    <!-- Ticket Form Modal -->
+    <div id="ticket-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <h3 id="ticket-modal-title" style="margin-bottom: 24px;">Buat Tiket Baru</h3>
+            <form id="ticket-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <input type="hidden" id="ticket-location">
+                <div>
+                    <label class="premium-label">Nama Pelapor</label>
+                    <input type="text" id="ticket-user" class="premium-input" placeholder="Nama Anda" required>
+                </div>
+                <div>
+                    <label class="premium-label">Kategori Kerusakan</label>
+                    <select id="ticket-category" class="premium-input" required>
+                        <option value="">Pilih Kategori</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Software">Software</option>
+                        <option value="Network">Network</option>
+                        <option value="Other">Lainnya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="premium-label">Prioritas</label>
+                    <select id="ticket-priority" class="premium-input" required>
+                        <option value="NORMAL">Normal</option>
+                        <option value="URGENT">Urgent</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="premium-label">Waktu Lapor</label>
+                    <input type="text" id="ticket-date-display" class="premium-input" readonly>
+                </div>
+                <div style="grid-column: span 2;">
+                    <label class="premium-label">Keterangan Kerusakan</label>
+                    <textarea id="ticket-desc" class="premium-input" style="height: 100px; resize: none;" placeholder="Jelaskan detail masalah..." required></textarea>
+                </div>
+                <div style="grid-column: span 2; display: flex; gap: 12px; justify-content: flex-end;">
+                    <button type="button" class="premium-btn" style="background: #E2E8F0; color: var(--primary);" onclick="closeTicketModal()">Batal</button>
+                    <button type="submit" class="premium-btn">Kirim Tiket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Asset Modal -->
+    <div id="add-asset-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width:700px;">
+            <h3 style="margin-bottom: 24px;">Tambah Asset Baru</h3>
+            <form id="add-asset-form" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div><label class="premium-label">ID Primary</label><input type="text" id="add-id-primary" class="premium-input" placeholder="Contoh: 006" required></div>
+                <div><label class="premium-label">PC ID (No)</label><input type="text" id="add-pc-id" class="premium-input" placeholder="Contoh: 6"></div>
+                <div><label class="premium-label">Nama Staff</label><input type="text" id="add-nama-staff" class="premium-input" placeholder="Nama Staff" required></div>
+                <div><label class="premium-label">Lokasi</label>
+                    <select id="add-location" class="premium-input" required>
+                        <option value="Semarang">Semarang</option>
+                        <option value="Makassar">Makassar</option>
+                    </select>
+                </div>
+                <div><label class="premium-label">Worker Type</label>
+                    <select id="add-worker-type" class="premium-input" required>
+                        <option value="Staff">Staff</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Internship">Internship</option>
+                        <option value="PC Render">PC Render</option>
+                    </select>
+                </div>
+                <div><label class="premium-label">Type</label><input type="text" id="add-type" class="premium-input" placeholder="Desktop/Laptop"></div>
+                <div><label class="premium-label">CPU</label><input type="text" id="add-cpu" class="premium-input" placeholder="AMD Ryzen 5 5600"></div>
+                <div><label class="premium-label">RAM</label><input type="text" id="add-ram" class="premium-input" placeholder="16 GB"></div>
+                <div><label class="premium-label">GPU</label><input type="text" id="add-gpu" class="premium-input" placeholder="RTX 3060"></div>
+                <div><label class="premium-label">SSD M2</label><input type="text" id="add-ssd" class="premium-input" placeholder="M.2 1 TB"></div>
+                <div><label class="premium-label">HDD 1</label><input type="text" id="add-hdd" class="premium-input" placeholder="-"></div>
+                <div style="grid-column:span 2; display:flex; gap:12px; justify-content:flex-end; margin-top:8px;">
+                    <button type="button" class="premium-btn" style="background:#E2E8F0;color:var(--primary);" onclick="closeAddAssetModal()">Cancel</button>
+                    <button type="submit" class="premium-btn">Simpan Asset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Feedback Submission Modal -->
+    <div id="feedback-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 480px;">
+            <h3 style="margin-bottom: 24px;">Berikan Feedback Anda</h3>
+            <form id="feedback-form">
+                <div style="margin-bottom: 20px;">
+                    <label class="premium-label">Nama Anda</label>
+                    <input type="text" id="feedback-user" class="premium-input" placeholder="Nama Lengkap" required>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label class="premium-label">Rating</label>
+                    <select id="feedback-rating" class="premium-input">
+                        <option value="5">⭐⭐⭐⭐⭐ (Sangat Baik)</option>
+                        <option value="4">⭐⭐⭐⭐ (Baik)</option>
+                        <option value="3">⭐⭐⭐ (Cukup)</option>
+                        <option value="2">⭐⭐ (Buruk)</option>
+                        <option value="1">⭐ (Sangat Buruk)</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 24px;">
+                    <label class="premium-label">Komentar / Masukan</label>
+                    <textarea id="feedback-comment" class="premium-input" style="height: 120px; resize: none;" placeholder="Tuliskan pengalaman Anda..." required></textarea>
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button type="button" class="premium-btn" style="background: #E2E8F0; color: var(--primary);" onclick="closeFeedbackModal()">Batal</button>
+                    <button type="submit" class="premium-btn">Kirim Feedback</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ticket Edit Modal (Admin) -->
+    <div id="ticket-edit-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 24px;">Update Status & PIC</h3>
+            <form id="ticket-edit-form">
+                <input type="hidden" id="edit-ticket-index">
+                <div style="margin-bottom: 20px;">
+                    <label class="premium-label">Status Tiket</label>
+                    <select id="edit-ticket-status" class="premium-input">
+                        <option value="OPEN">OPEN</option>
+                        <option value="IN PROGRESS">IN PROGRESS</option>
+                        <option value="CLOSED">CLOSED</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 24px;">
+                    <label class="premium-label">Petugas (PIC)</label>
+                    <select id="edit-ticket-pic" class="premium-input">
+                        <option value="">Pilih PIC</option>
+                        <option value="Ari">Ari</option>
+                        <option value="Edo">Edo</option>
+                        <option value="Akram">Akram</option>
+                        <option value="Ikhsan">Ikhsan</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 24px;">
+                    <label class="premium-label">Perbaikan</label>
+                    <textarea id="edit-ticket-perbaikan" class="premium-input" style="height: 100px; resize: none;" placeholder="Detail perbaikan..."></textarea>
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button type="button" class="premium-btn" style="background: #E2E8F0; color: var(--primary);" onclick="closeTicketEditModal()">Cancel</button>
+                    <button type="submit" class="premium-btn">Update Tiket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Schedule Modal -->
+    <div id="schedule-edit-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width:400px;">
+            <h3 style="margin-bottom:24px;">Atur Jadwal Manual</h3>
+            <form id="schedule-edit-form">
+                <input type="hidden" id="edit-sched-id">
+                <div style="margin-bottom:20px;">
+                    <label class="premium-label">PC Info</label>
+                    <p id="edit-sched-info" style="font-weight:700; color:var(--accent);"></p>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label class="premium-label">PC ID</label>
+                    <input type="text" id="edit-sched-pcid" class="premium-input" placeholder="No PC">
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label class="premium-label">Lokasi</label>
+                    <select id="edit-sched-location" class="premium-input">
+                        <option value="Semarang">Semarang</option>
+                        <option value="Makassar">Makassar</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:24px;">
+                    <label class="premium-label">Pilih Tanggal Maintenance</label>
+                    <input type="date" id="edit-sched-date" class="premium-input" required>
+                </div>
+                <div style="display:flex; gap:12px; justify-content:flex-end;">
+                    <button type="button" class="premium-btn" style="background:#E2E8F0;color:var(--primary);" onclick="closeScheduleModal()">Batal</button>
+                    <button type="submit" class="premium-btn">Simpan Jadwal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .modal-overlay { z-index: 9999; }
+    </style>
+
+    <!-- Staff Management Modal -->
+    <div id="staff-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 480px;">
+            <h3 id="staff-modal-title" style="margin-bottom: 24px;">Tambah Staff Baru</h3>
+            <form id="staff-form">
+                <input type="hidden" id="staff-id">
+                <div style="margin-bottom: 16px;">
+                    <label class="premium-label">Kode RFID</label>
+                    <input type="text" id="staff-rfid" class="premium-input" placeholder="Tempelkan kartu atau ketik ID" required>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <label class="premium-label">Nama Lengkap</label>
+                    <input type="text" id="staff-name" class="premium-input" placeholder="Nama Lengkap Pegawai" required>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <label class="premium-label">Worker Type</label>
+                    <select id="staff-worker-type" class="premium-input" required>
+                        <option value="Staff">Staff</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Internship">Internship</option>
+                        <option value="PC Render">PC Render</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <label class="premium-label">Lokasi Kantor</label>
+                    <input type="text" id="staff-location" class="premium-input" placeholder="Contoh: Semarang" required>
+                </div>
+                <div style="margin-bottom: 24px;">
+                    <label class="premium-label">Masa Kerja (Tahun/Bulan)</label>
+                    <input type="text" id="staff-period" class="premium-input" placeholder="Contoh: 2 Tahun 3 Bulan">
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button type="button" class="premium-btn" style="background: #E2E8F0; color: var(--primary);" onclick="closeStaffModal()">Batal</button>
+                    <button type="submit" class="premium-btn">Simpan Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Maintenance Checklist Modal (Admin Only) -->
+    <div id="mnt-checklist-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width:480px;">
+            <h3 style="margin-bottom:6px;">🔧 Checklist Maintenance</h3>
+            <p id="mnt-modal-pc-info" style="color:var(--text-muted); font-size:0.9rem; margin-bottom:24px;"></p>
+            <form id="mnt-checklist-form">
+                <input type="hidden" id="mnt-modal-asset-id">
+                <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:28px;">
+                    <label style="display:flex; align-items:center; gap:14px; cursor:pointer; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:12px; padding:14px 18px;">
+                        <input type="checkbox" id="chk-repasta-vga" style="width:20px;height:20px;accent-color:#4F46E5;cursor:pointer;">
+                        <div>
+                            <div style="font-weight:700;">🎮 Repasta VGA</div>
+                            <div style="font-size:0.8rem;color:var(--text-muted);">Ganti thermal paste pada GPU</div>
+                        </div>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:14px; cursor:pointer; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:12px; padding:14px 18px;">
+                        <input type="checkbox" id="chk-repasta-cpu" style="width:20px;height:20px;accent-color:#4F46E5;cursor:pointer;">
+                        <div>
+                            <div style="font-weight:700;">🧠 Repasta CPU</div>
+                            <div style="font-size:0.8rem;color:var(--text-muted);">Ganti thermal paste pada prosesor</div>
+                        </div>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:14px; cursor:pointer; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:12px; padding:14px 18px;">
+                        <input type="checkbox" id="chk-cleaning" style="width:20px;height:20px;accent-color:#4F46E5;cursor:pointer;">
+                        <div>
+                            <div style="font-weight:700;">🧹 Cleaning PC</div>
+                            <div style="font-size:0.8rem;color:var(--text-muted);">Bersihkan debu komponen dan casing</div>
+                        </div>
+                    </label>
+                    <div style="margin-top: 8px;">
+                        <label class="premium-label" style="font-size: 0.85rem; margin-bottom: 8px; display: block;">📝 Catatan Admin (Opsional)</label>
+                        <textarea id="mnt-admin-notes" class="premium-input" style="height: 80px; font-size: 0.9rem; padding: 12px;" placeholder="Contoh: Pemilik sedang sibuk, pembersihan dilakukan cepat..."></textarea>
+                    </div>
+                </div>
+                <div style="display:flex; gap:12px; justify-content:flex-end;">
+                    <button type="button" class="premium-btn" style="background:#E2E8F0;color:var(--primary);" onclick="closeMntModal()">Batal</button>
+                    <button type="submit" class="premium-btn" id="mnt-submit-btn" disabled style="opacity:0.5;">✅ Selesai & Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        const translations = {
+            id: {
+                "brand": "ESDRUPARAYA",
+                "subtitle": "Manajemen IT Cerdas",
+                "new-ticket": "+ Tiket Baru",
+                "stat-active": "Tiket Aktif",
+                "stat-waiting": "Menunggu Respon",
+                "stat-closed": "Selesai Hari Ini",
+                "recent-activity": "Aktivitas Terbaru",
+                "t1-title": "Kesalahan Sistem Kritis",
+                "t1-desc": "Server utama di Makassar melaporkan latensi tinggi.",
+                "t2-title": "Penyediaan Akun",
+                "t2-desc": "Onboarding karyawan baru untuk cabang Semarang.",
+                "urgent": "MENDESAK",
+                "normal": "NORMAL"
+            },
+            ja: {
+                "brand": "ESDRUPARAYA",
+                "subtitle": "インテリジェントIT管理",
+                "new-ticket": "+ 新規チケット",
+                "stat-active": "アクティブなチケット",
+                "stat-waiting": "返信待ち",
+                "stat-closed": "本日の完了",
+                "recent-activity": "最近のアクティビティ",
+                "t1-title": "重大なシステムエラー",
+                "t1-desc": "マカッサルのメインサーバーで高レイテンシが報告されています。",
+                "t2-title": "アカウントプロビジョニング",
+                "t2-desc": "スマラン支店の新入社員オンボーディング。",
+                "urgent": "緊急",
+                "normal": "通常"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.pill-item').forEach(pill => {
+                pill.classList.remove('active');
+                if (pill.innerText.toLowerCase() === lang) pill.classList.add('active');
+            });
+
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            document.documentElement.lang = lang;
+        }
+
+        let assets = [];       // ALL assets (for maintenance/stats)
+        let assetPage = [];    // current page assets (for table)
+        let tickets = [];
+        let maintenanceSchedule = [];
+        let assetCurrentPage = 1;
+        let assetTotalPages = 1;
+        let assetTotal = 0;
+        let assetSearchTimeout = null;
+        let isAdmin = false; // Move to top
+
+        function isModalOpen() {
+            return !!document.querySelector('.modal-overlay.active');
+        }
+
+        function debouncedAssetSearch() {
+            clearTimeout(assetSearchTimeout);
+            assetSearchTimeout = setTimeout(() => {
+                assetCurrentPage = 1;
+                renderAssets();
+            }, 350);
+        }
+
+        function goAssetPage(page) {
+            if (page < 1 || page > assetTotalPages) return;
+            assetCurrentPage = page;
+            renderAssets();
+        }
+
+        let staff = [];
+
+        async function fetchData() {
+            try {
+                const [ticketsRes, allAssetsRes, scheduleRes, staffRes] = await Promise.all([
+                    fetch('/api/tickets'),
+                    fetch('/api/assets/all'),
+                    fetch('/api/maintenance-schedule'),
+                    fetch('/api/staff')
+                ]);
+                
+                if (ticketsRes.ok) tickets = await ticketsRes.json();
+                if (allAssetsRes.ok) assets = await allAssetsRes.json();
+                if (scheduleRes.ok) maintenanceSchedule = await scheduleRes.json();
+                if (staffRes.ok) staff = await staffRes.json();
+                
+                if (!Array.isArray(tickets)) tickets = [];
+                if (!Array.isArray(assets)) assets = [];
+                if (!Array.isArray(maintenanceSchedule)) maintenanceSchedule = [];
+                if (!Array.isArray(staff)) staff = [];
+
+                updateStats();
+                if (document.getElementById('section-dashboard').classList.contains('active')) {
+                    renderDashboardTickets();
+                }
+                if (document.getElementById('section-tickets').classList.contains('active')) renderTickets();
+                if (document.getElementById('section-maintenance').classList.contains('active')) {
+                    renderMaintenance();
+                    renderDailySchedule();
+                }
+                if (document.getElementById('section-settings')) {
+                    if (document.getElementById('section-settings').classList.contains('active')) {
+                        if (document.getElementById('tab-assets') && document.getElementById('tab-assets').style.display !== 'none') renderAssets();
+                        if (document.getElementById('tab-planning') && document.getElementById('tab-planning').style.display !== 'none') renderSchedule();
+                        if (document.getElementById('tab-staff') && document.getElementById('tab-staff').style.display !== 'none') renderStaff();
+                    }
+                }
+                if (document.getElementById('section-feedback') && document.getElementById('section-feedback').classList.contains('active')) renderFeedback();
+                if (document.getElementById('section-dashboard').classList.contains('active')) {
+                    initAttendance();
+                    renderDashboardFeedback();
+                }
+            } catch (err) {
+                console.error('Error fetching data:', err);
+                // Fallback to empty arrays if everything fails
+                if (!Array.isArray(tickets)) tickets = [];
+                if (!Array.isArray(assets)) assets = [];
+                if (!Array.isArray(maintenanceSchedule)) maintenanceSchedule = [];
+            }
+        }
+
+        let feedbacks = [];
+
+        function updateStats() {
+            document.getElementById('stat-active-val').innerText = tickets.filter(t => t.status === 'OPEN').length;
+            document.getElementById('stat-assets-val').innerText = assets.length;
+
+            const overdueCount = assets.filter(a => {
+                const lastDate = new Date(a.lastMaintenance);
+                const nextDate = new Date(lastDate.setMonth(lastDate.getMonth() + 4));
+                return new Date() > nextDate;
+            }).length;
+            document.getElementById('stat-overdue-val').innerText = overdueCount;
+        }
+
+        function switchSection(sectionId) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                const title = item.getAttribute('title').toLowerCase();
+                if (title.includes(sectionId) || (sectionId === 'schedule' && title.includes('planning'))) {
+                    item.classList.add('active');
+                }
+            });
+
+            document.querySelectorAll('.app-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const targetSection = document.getElementById(`section-${sectionId}`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            } else {
+                console.warn(`Section section-${sectionId} not found`);
+                return;
+            }
+
+            if (sectionId === 'dashboard') {
+                initAttendance();
+                fetchData();
+            } else if (sectionId === 'settings') {
+                document.querySelectorAll('.setting-tab-content').forEach(t => t.style.display = 'none');
+                document.getElementById('tab-staff').style.display = 'block';
+                document.getElementById('setting-admin-msg').style.display = 'none';
+                renderStaff();
+                if (assets.length === 0) fetchData(); // Fetch data if not loaded
+            } else if (sectionId === 'attendance-report') {
+                if (!document.getElementById('report-month').value) {
+                    const now = new Date();
+                    document.getElementById('report-month').value = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+                }
+                renderAttendanceReport();
+            } else if (sectionId === 'feedback') {
+                renderFeedback();
+            } else {
+                fetchData();
+            }
+        }
+
+        function switchSettingTab(tabId, btn) {
+            document.querySelectorAll('.setting-tab-content').forEach(t => t.style.display = 'none');
+            document.getElementById(`tab-${tabId}`).style.display = 'block';
+            
+            btn.parentElement.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (tabId === 'staff') renderStaff();
+            if (tabId === 'assets') renderAssets();
+            if (tabId === 'planning') renderSchedule();
+        }
+
+        function renderDailySchedule() {
+            const container = document.getElementById('daily-schedule-list');
+            const label = document.getElementById('mnt-today-label');
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0];
+
+            // Filter jadwal dari tabel maintenance_schedule untuk hari ini yang PENDING
+            const todayTasks = maintenanceSchedule.filter(s => s.scheduledDate === todayStr && s.status === 'PENDING');
+            const todayMak = todayTasks.filter(s => s.location === 'Makassar');
+            const todaySem = todayTasks.filter(s => s.location === 'Semarang');
+
+            const dayStr = today.toLocaleDateString('id-ID', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+            label.textContent = `${dayStr} — ${todayMak.length} PC Makassar + ${todaySem.length} PC Semarang dijadwalkan (Master Jadwal)`;
+
+            if (todayTasks.length === 0) {
+                container.innerHTML = '<span style="color:#10B981;font-weight:700;">🎉 Tidak ada jadwal maintenance untuk hari ini.</span>';
+                return;
+            }
+
+            container.innerHTML = todayTasks.map(s => {
+                const locColor = s.location === 'Makassar' ? '#EF4444' : '#4F46E5';
+                return `<div style="background:white;padding:12px 18px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);display:flex;align-items:center;gap:12px;border-left:4px solid ${locColor}; cursor:pointer;" onclick="switchSection('schedule')">
+                    <div style="width:8px;height:8px;background:${locColor};border-radius:50%;"></div>
+                    <div>
+                        <div style="font-weight:700;font-size:0.9rem;">${s.assetId}</div>
+                        <div style="font-size:0.75rem;color:#64748B;">${s.namaStaff || '-'} &bull; ${s.location}</div>
+                    </div>
+                </div>`;
+            }).join('');
+
+            // Update badge (Overdue yang belum dikerjakan sesuai jadwal)
+            const overdueCount = maintenanceSchedule.filter(s => new Date(s.scheduledDate) < today && s.status === 'PENDING').length;
+            document.getElementById('mnt-overdue-badge').textContent = `⚠ ${overdueCount} Tertunda`;
+        }
+
+        function renderDashboardTickets() {
+            const list = document.getElementById('dashboard-ticket-list');
+            list.innerHTML = tickets.slice(0, 5).map(t => `
+                <tr>
+                    <td data-label="ID" style="font-weight: 700;">${t.id}</td>
+                    <td data-label="Issue">
+                        <div style="font-weight: 600;">${t.issue}</div>
+                    </td>
+                    <td data-label="Office">${t.location}</td>
+                    <td data-label="User">${t.user}</td>
+                    <td data-label="Date" style="font-size: 0.8rem;">${t.date}</td>
+                    <td data-label="Priority">
+                        <span style="color: ${t.priority === 'URGENT' ? '#EF4444' : t.priority === 'NORMAL' ? 'var(--accent)' : '#64748B'}; font-weight: 700;">${t.priority}</span>
+                    </td>
+                    <td data-label="Status">
+                        <span style="padding: 4px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; background: ${t.status === 'OPEN' ? '#FEF3C7' : t.status === 'IN PROGRESS' ? '#DBEAFE' : '#ECFDF5'}; color: ${t.status === 'OPEN' ? '#D97706' : t.status === 'IN PROGRESS' ? '#2563EB' : '#10B981'};">
+                            ${t.status}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        let currentTicketFilter = 'all';
+
+        function filterTickets(filter, btn) {
+            currentTicketFilter = filter;
+            document.querySelectorAll('#ticket-filters .filter-pill').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            renderTickets();
+        }
+
+        function renderTickets() {
+            const tbody = document.getElementById('tickets-table-body');
+            let filteredTickets = tickets;
+            
+            if (currentTicketFilter !== 'all') {
+                filteredTickets = tickets.filter(t => 
+                    t.location === currentTicketFilter || t.issue === currentTicketFilter
+                );
+            }
+
+            tbody.innerHTML = filteredTickets.map(t => `
+                <tr>
+                    <td data-label="Ticket ID" style="font-weight: 700;">${t.id}</td>
+                    <td data-label="Issue">
+                        <div style="font-weight: 600;">${t.issue}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">${t.description}</div>
+                    </td>
+                    <td data-label="Office">${t.location}</td>
+                    <td data-label="User">${t.user}</td>
+                    <td data-label="Date & Time" style="font-size: 0.8rem;">${t.date}</td>
+                    <td data-label="Priority">
+                        <span style="color: ${t.priority === 'URGENT' ? '#EF4444' : t.priority === 'NORMAL' ? 'var(--accent)' : '#64748B'}; font-weight: 700;">${t.priority}</span>
+                    </td>
+                    <td data-label="Status">
+                        <span style="padding: 4px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; background: ${t.status === 'OPEN' ? '#FEF3C7' : t.status === 'IN PROGRESS' ? '#DBEAFE' : '#ECFDF5'}; color: ${t.status === 'OPEN' ? '#D97706' : t.status === 'IN PROGRESS' ? '#2563EB' : '#10B981'};">
+                            ${t.status}
+                        </span>
+                    </td>
+                    <td data-label="PIC" style="font-weight: 700;">${t.pic || '-'}</td>
+                    <td data-label="Action" class="admin-only" style="display: ${isAdmin ? 'table-cell' : 'none'};">
+                        <div style="display: flex; gap: 8px;">
+                            <button class="premium-btn" style="padding: 6px 12px; font-size: 0.75rem;" onclick="openTicketEditModal('${t.id}')">Update</button>
+                            <button class="premium-btn" style="padding: 6px 12px; font-size: 0.75rem; background: #EF4444;" onclick="deleteTicket('${t.id}')">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        let currentMntFilter = 'all';
+
+        function filterMaintenance(loc, btn) {
+            currentMntFilter = loc;
+            document.querySelectorAll('.location-filters .filter-pill').forEach(p => p.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderMaintenance(loc);
+        }
+
+        function renderMaintenance(filter = 'all') {
+            const tbody = document.getElementById('maintenance-table-body');
+            const emptyMsg = document.getElementById('mnt-empty-msg');
+            const actionTh = document.getElementById('mnt-action-th');
+            tbody.innerHTML = '';
+
+            const today = new Date();
+
+            // Ambil overdue: cek manual schedule dulu, jika tidak ada baru cek 4 bulan
+            today.setHours(0,0,0,0);
+            let overdue = assets.filter(a => {
+                const sched = maintenanceSchedule.find(s => s.assetId === a.id && s.status === 'PENDING');
+                if (sched) {
+                    const schedDate = new Date(sched.scheduledDate);
+                    schedDate.setHours(0,0,0,0);
+                    if (schedDate < today) {
+                        a._schedOverdue = schedDate;
+                        return true;
+                    }
+                }
+                const last = new Date(a.lastMaintenance);
+                const next = new Date(last); next.setMonth(next.getMonth() + 4);
+                next.setHours(0,0,0,0);
+                if (today > next) {
+                    a._autoOverdue = next;
+                    return true;
+                }
+                return false;
+            });
+
+            if (filter !== 'all') overdue = overdue.filter(a => a.location === filter);
+
+            // Sort: Urut berdasarkan PC ID (Numerik)
+            overdue.sort((a, b) => (parseInt(a.pcId) || 0) - (parseInt(b.pcId) || 0));
+
+            // Update progress
+            const total = assets.length;
+            const doneCount = assets.length - assets.filter(a => {
+                const sched = maintenanceSchedule.find(s => s.assetId === a.id && s.status === 'PENDING');
+                if (sched) {
+                    const schedDate = new Date(sched.scheduledDate);
+                    schedDate.setHours(0,0,0,0);
+                    return schedDate < today;
+                }
+                const last = new Date(a.lastMaintenance);
+                const next = new Date(last); next.setMonth(next.getMonth() + 4);
+                next.setHours(0,0,0,0);
+                return today > next;
+            }).length;
+            const pct = total > 0 ? Math.round((doneCount / total) * 100) : 0;
+            document.getElementById('mnt-progress-bar').style.width = pct + '%';
+            document.getElementById('mnt-progress-pct').textContent = pct + '%';
+
+            // Stats per lokasi
+            const makTotal = assets.filter(a => a.location === 'Makassar').length;
+            const semTotal = assets.filter(a => a.location === 'Semarang').length;
+            const makOver = assets.filter(a => {
+                if (a.location !== 'Makassar') return false;
+                const sched = maintenanceSchedule.find(s => s.assetId === a.id && s.status === 'PENDING');
+                if (sched) {
+                    const schedDate = new Date(sched.scheduledDate); schedDate.setHours(0,0,0,0);
+                    return schedDate < today;
+                }
+                const last = new Date(a.lastMaintenance); const next = new Date(last); next.setMonth(next.getMonth()+4); next.setHours(0,0,0,0);
+                return today > next;
+            }).length;
+            const semOver = assets.filter(a => {
+                if (a.location !== 'Semarang') return false;
+                const sched = maintenanceSchedule.find(s => s.assetId === a.id && s.status === 'PENDING');
+                if (sched) {
+                    const schedDate = new Date(sched.scheduledDate); schedDate.setHours(0,0,0,0);
+                    return schedDate < today;
+                }
+                const last = new Date(a.lastMaintenance); const next = new Date(last); next.setMonth(next.getMonth()+4); next.setHours(0,0,0,0);
+                return today > next;
+            }).length;
+            document.getElementById('mnt-loc-stats').innerHTML =
+                `<span>🔴 Makassar: ${makOver} overdue / ${makTotal} total</span>
+                 <span>🔵 Semarang: ${semOver} overdue / ${semTotal} total</span>`;
+
+            // Show/hide action column
+            if (actionTh) actionTh.style.display = isAdmin ? 'table-cell' : 'none';
+
+            if (overdue.length === 0) {
+                emptyMsg.style.display = 'block';
+                return;
+            }
+            emptyMsg.style.display = 'none';
+
+            overdue.forEach((asset, idx) => {
+                let diffDays = 0;
+                let lateSource = '';
+                if (asset._schedOverdue) {
+                    diffDays = Math.floor((today - asset._schedOverdue) / (1000 * 60 * 60 * 24));
+                    lateSource = ' (Jadwal)';
+                } else if (asset._autoOverdue) {
+                    diffDays = Math.floor((today - asset._autoOverdue) / (1000 * 60 * 60 * 24));
+                    lateSource = ' (4 Bulan)';
+                }
+                const diffMonths = Math.floor(diffDays / 30);
+                const lateTxt = diffMonths > 0 ? `${diffMonths} bulan ${diffDays % 30} hari${lateSource}` : `${diffDays} hari${lateSource}`;
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:700;color:var(--text-muted);">${idx + 1}</td>
+                        <td style="font-weight:700;">${asset.id}<br><span style="font-size:0.75rem;color:var(--text-muted);">${asset.pcId ? 'PC#'+asset.pcId : ''}</span></td>
+                        <td>${asset.namaStaff || asset.user || '-'}</td>
+                        <td><span style="padding:3px 10px;border-radius:8px;font-size:0.8rem;font-weight:700;background:${asset.location==='Makassar'?'#FEE2E2':'#DBEAFE'};color:${asset.location==='Makassar'?'#EF4444':'#2563EB'};">${asset.location}</span></td>
+                        <td>${asset.workerType || '-'}</td>
+                        <td style="font-size:0.85rem;">${asset.lastMaintenance || '-'}</td>
+                        <td><span style="color:#EF4444;font-weight:700;font-size:0.85rem;">⏰ ${lateTxt}</span></td>
+                        <td style="display:${isAdmin ? 'table-cell' : 'none'}">
+                            <button class="premium-btn" style="padding:6px 14px;font-size:0.8rem;background:#10B981;" onclick="openMntModal('${asset.id}')">
+                                📋 Checklist
+                            </button>
+                        </td>
+                    </tr>`;
+            });
+        }
+
+        // --- Maintenance Checklist Modal ---
+        function openMntModal(assetId) {
+            const asset = assets.find(a => a.id === assetId);
+            if (!asset) return;
+            document.getElementById('mnt-modal-asset-id').value = assetId;
+            document.getElementById('mnt-modal-pc-info').textContent =
+                `PC ID: ${asset.id} | ${asset.namaStaff || asset.user || '-'} | ${asset.location}`;
+            // Reset checkboxes
+            ['chk-repasta-vga','chk-repasta-cpu','chk-cleaning'].forEach(id => {
+                document.getElementById(id).checked = false;
+            });
+            document.getElementById('mnt-admin-notes').value = '';
+            document.getElementById('mnt-submit-btn').disabled = true;
+            document.getElementById('mnt-submit-btn').style.opacity = '0.5';
+            document.getElementById('mnt-checklist-modal').classList.add('active');
+        }
+
+        function closeMntModal() {
+            document.getElementById('mnt-checklist-modal').classList.remove('active');
+        }
+
+        // Enable tombol submit kalau minimal 1 checklist dicentang
+        ['chk-repasta-vga','chk-repasta-cpu','chk-cleaning'].forEach(id => {
+            document.getElementById(id).addEventListener('change', () => {
+                const anyChecked = ['chk-repasta-vga','chk-repasta-cpu','chk-cleaning']
+                    .some(cid => document.getElementById(cid).checked);
+                document.getElementById('mnt-submit-btn').disabled = !anyChecked;
+                document.getElementById('mnt-submit-btn').style.opacity = anyChecked ? '1' : '0.5';
+            });
+        });
+
+        document.getElementById('mnt-checklist-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const assetId = document.getElementById('mnt-modal-asset-id').value;
+            const checklist = {
+                repastaVGA: document.getElementById('chk-repasta-vga').checked,
+                repastaCPU: document.getElementById('chk-repasta-cpu').checked,
+                cleaning:   document.getElementById('chk-cleaning').checked,
+                notes:      document.getElementById('mnt-admin-notes').value
+            };
+            try {
+                // Update lastMaintenance ke hari ini via PUT API
+                const today = new Date().toISOString().split('T')[0];
+                const asset = assets.find(a => a.id === assetId);
+                const res = await fetch(`/api/assets/${assetId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        pcId: asset.pcId || '',
+                        namaStaff: asset.namaStaff || asset.user || '',
+                        location: asset.location,
+                        workerType: asset.workerType,
+                        type: asset.type || '',
+                        cpu: asset.cpu || '',
+                        ram: asset.ram || '',
+                        gpu: asset.gpu || '',
+                        ssdM2: asset.ssdM2 || '',
+                        hdd1: asset.hdd1 || '',
+                        lastMaintenance: today,
+                        lastMaintenanceNotes: checklist.notes
+                    })
+                });
+                if (!res.ok) throw new Error(await res.text());
+
+                // Update status di tabel jadwal jika ada
+                const schedEntry = maintenanceSchedule.find(s => s.assetId === assetId && s.status === 'PENDING');
+                if (schedEntry) {
+                    await fetch(`/api/maintenance-schedule/${schedEntry.id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ status: 'DONE', notes: checklist.notes })
+                    });
+                }
+
+                const done = [checklist.repastaVGA?'Repasta VGA':'', checklist.repastaCPU?'Repasta CPU':'', checklist.cleaning?'Cleaning PC':''].filter(Boolean);
+                document.getElementById('mnt-done-badge').textContent = `✅ ${done.length} Task Selesai`;
+                closeMntModal();
+                fetchData();
+                alert(`✅ Maintenance selesai!\n\nDilakukan: ${done.join(', ')}\nLastMaintenance diupdate ke: ${today}`);
+            } catch (err) {
+                alert('Gagal menyimpan: ' + err.message);
+            }
+        };
+
+        // --- Schedule Planning Functions ---
+        async function fetchAllAssetsForSchedule() {
+            try {
+                const res = await fetch('/api/assets/all');
+                return await res.json();
+            } catch (err) {
+                console.error(err);
+                return [];
+            }
+        }
+
+        async function renderSchedule() {
+            const tbody = document.getElementById('schedule-table-body');
+            const search = document.getElementById('schedule-search').value.toLowerCase();
+            const filterStatus = document.getElementById('schedule-filter-status').value;
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Memuat data...</td></tr>';
+
+            const allAssets = await fetchAllAssetsForSchedule();
+
+            let filteredAssets = allAssets.filter(a => 
+                (a.id.toLowerCase().includes(search) || (a.pcId || '').toLowerCase().includes(search) || (a.namaStaff || '').toLowerCase().includes(search) || (a.location || '').toLowerCase().includes(search))
+            );
+
+            // Compute schedule status
+            filteredAssets = filteredAssets.map(a => {
+                const scheds = maintenanceSchedule.filter(s => s.assetId === a.id);
+                const pendingSched = scheds.find(s => s.status === 'PENDING');
+                return { ...a, pendingSched };
+            });
+
+            if (filterStatus === 'Scheduled') {
+                filteredAssets = filteredAssets.filter(a => a.pendingSched);
+            } else if (filterStatus === 'Non-Scheduled') {
+                filteredAssets = filteredAssets.filter(a => !a.pendingSched);
+            }
+
+            tbody.innerHTML = '';
+            if (filteredAssets.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px;">Tidak ada data ditemukan.</td></tr>';
+            }
+
+            filteredAssets.forEach(a => {
+                const statusBadge = a.pendingSched ? 
+                    `<span style="padding:4px 12px;border-radius:8px;font-size:0.8rem;font-weight:700;background:#DBEAFE;color:#2563EB;">📅 Scheduled (${a.pendingSched.scheduledDate})</span>` : 
+                    `<span style="padding:4px 12px;border-radius:8px;font-size:0.8rem;font-weight:700;background:#FEF2F2;color:#EF4444;">❌ Non-Scheduled</span>`;
+                
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:700;">${a.id}<br><span style="font-size:0.75rem;color:var(--text-muted);">${a.pcId ? 'PC#'+a.pcId : ''}</span></td>
+                        <td>${a.namaStaff || '-'}</td>
+                        <td><span style="padding:3px 10px;border-radius:8px;font-size:0.8rem;font-weight:700;background:${a.location==='Makassar'?'#FEE2E2':'#DBEAFE'};color:${a.location==='Makassar'?'#EF4444':'#2563EB'};">${a.location}</span></td>
+                        <td>${statusBadge}</td>
+                        <td class="admin-only" style="display:${isAdmin ? 'table-cell' : 'none'}">
+                            <button class="premium-btn" style="padding:6px 14px;font-size:0.8rem; background:#10B981;" onclick="openScheduleModal('${a.id}')">📅 Schedule</button>
+                            ${a.pendingSched ? `<button class="premium-btn" style="padding:6px 14px;font-size:0.8rem;background:#EF4444;" onclick="deleteSchedule(${a.pendingSched.id})">Del</button>` : ''}
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function approveSchedule(id) {
+            try {
+                const res = await fetch(`/api/maintenance-schedule/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ isApproved: true, approvedBy: 'Admin' })
+                });
+                if (res.ok) { fetchData(); }
+            } catch (err) { alert('Gagal approve: ' + err.message); }
+        }
+
+
+
+        async function deleteSchedule(id) {
+            if (!confirm('Hapus jadwal ini?')) return;
+            try {
+                const res = await fetch(`/api/maintenance-schedule/${id}`, { method: 'DELETE' });
+                if (res.ok) { fetchData(); alert('Jadwal dihapus!'); }
+            } catch (err) { alert('Gagal: ' + err.message); }
+        }
+
+        async function openScheduleModal(assetId) {
+            const allAssets = await fetchAllAssetsForSchedule();
+            const a = allAssets.find(x => x.id === assetId);
+            if(!a) return;
+            document.getElementById('edit-sched-id').value = a.id; // now storing assetId
+            document.getElementById('edit-sched-info').textContent = `${a.id} - ${a.namaStaff || ''} (${a.location})`;
+            document.getElementById('edit-sched-pcid').value = a.pcId || '';
+            document.getElementById('edit-sched-location').value = a.location || 'Semarang';
+            document.getElementById('edit-sched-date').value = '';
+            document.getElementById('schedule-edit-modal').classList.add('active');
+        }
+
+        function closeScheduleModal() {
+            document.getElementById('schedule-edit-modal').classList.remove('active');
+            if (document.getElementById('section-dashboard').classList.contains('active')) {
+                setTimeout(() => document.getElementById('att-rfid')?.focus(), 100);
+            }
+        }
+
+        document.getElementById('schedule-edit-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const assetId = document.getElementById('edit-sched-id').value;
+            const newDate = document.getElementById('edit-sched-date').value;
+            const newPcId = document.getElementById('edit-sched-pcid').value;
+            const newLocation = document.getElementById('edit-sched-location').value;
+            
+            try {
+                // Fetch full asset data to pass namaStaff
+                const allAssets = await fetchAllAssetsForSchedule();
+                const a = allAssets.find(x => x.id === assetId);
+                
+                const res = await fetch('/api/maintenance-schedule', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        assetId: assetId,
+                        namaStaff: a ? a.namaStaff : '',
+                        scheduledDate: newDate, 
+                        pcId: newPcId, 
+                        location: newLocation 
+                    })
+                });
+                if (res.ok) {
+                    closeScheduleModal();
+                    fetchData();
+                    alert('Jadwal berhasil dibuat!');
+                } else {
+                    const msg = await res.text();
+                    alert('Gagal buat jadwal: ' + msg);
+                }
+            } catch (err) { alert('Gagal update: ' + err.message); }
+        }
+
+        async function renderAssets() {
+            const tbody = document.getElementById('assets-table-body');
+            const searchTerm = document.getElementById('asset-search').value.trim();
+            const limit = parseInt(document.getElementById('asset-page-size').value) || 20;
+            tbody.innerHTML = '<tr><td colspan="12" style="text-align:center; padding:40px; color:var(--text-muted);">⏳ Memuat data...</td></tr>';
+
+            const actionTh = document.getElementById('asset-action-th');
+            if (actionTh) actionTh.style.display = isAdmin ? 'table-cell' : 'none';
+
+            try {
+                const params = new URLSearchParams({
+                    page: assetCurrentPage,
+                    limit: limit,
+                    ...(searchTerm && { search: searchTerm })
+                });
+                const res = await fetch(`/api/assets?${params}`);
+                const result = await res.json();
+                assetPage = result.data;
+                assetTotalPages = result.pagination.totalPages;
+                assetTotal = result.pagination.total;
+
+                tbody.innerHTML = '';
+                if (assetPage.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center; padding:40px; color:var(--text-muted);">Tidak ada data ditemukan.</td></tr>';
+                } else {
+                    assetPage.forEach((asset) => {
+                        const locColor = asset.location === 'Makassar' ? '#FEE2E2' : '#DBEAFE';
+                        const locText = asset.location === 'Makassar' ? '#EF4444' : '#2563EB';
+                        const row = `
+                            <tr>
+                                <td data-label="ID" style="font-weight:700;">${asset.id || '-'}</td>
+                                <td data-label="PC ID" style="font-weight:600; color:var(--accent);">${asset.pcId || '-'}</td>
+                                <td data-label="Nama Staff" style="font-weight:600;">${asset.namaStaff || '-'}</td>
+                                <td data-label="Lokasi"><span style="padding:3px 10px;border-radius:8px;font-size:0.8rem;font-weight:700;background:${locColor};color:${locText};">${asset.location || '-'}</span></td>
+                                <td data-label="Worker Type"><span style="padding:3px 10px;border-radius:8px;font-size:0.8rem;font-weight:600;background:#F0FDF4;color:#16A34A;">${asset.workerType || '-'}</span></td>
+                                <td data-label="Type">${asset.type || '-'}</td>
+                                <td data-label="CPU" style="font-size:0.8rem;">${asset.cpu || '-'}</td>
+                                <td data-label="RAM">${asset.ram || '-'}</td>
+                                <td data-label="GPU" style="font-size:0.8rem;">${asset.gpu || '-'}</td>
+                                <td data-label="SSD M2" style="font-weight:600; color:#7C3AED;">${asset.ssdM2 || '-'}</td>
+                                <td data-label="HDD 1">${asset.hdd1 || '-'}</td>
+                                <td data-label="Action" style="display:${isAdmin ? 'table-cell' : 'none'}">
+                                    <div style="display:flex;gap:6px;">
+                                        <button class="premium-btn" style="padding:6px 10px;font-size:0.75rem;" onclick="openEditModal('${asset.id}')">Edit</button>
+                                        <button class="premium-btn" style="padding:6px 10px;font-size:0.75rem;background:#EF4444;" onclick="deleteAsset('${asset.id}')">Del</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                        tbody.innerHTML += row;
+                    });
+                }
+
+                // Update pagination UI
+                renderPagination();
+            } catch (err) {
+                console.error('Error fetching assets:', err);
+                tbody.innerHTML = '<tr><td colspan="12" style="text-align:center; padding:40px; color:#EF4444;">❌ Gagal memuat data</td></tr>';
+            }
+        }
+
+        function renderPagination() {
+            const pgNumbers = document.getElementById('pg-numbers');
+            const pgInfo = document.getElementById('pg-info');
+            const pgFirst = document.getElementById('pg-first');
+            const pgPrev = document.getElementById('pg-prev');
+            const pgNext = document.getElementById('pg-next');
+            const pgLast = document.getElementById('pg-last');
+
+            // Info text
+            const limit = parseInt(document.getElementById('asset-page-size').value) || 20;
+            const start = (assetCurrentPage - 1) * limit + 1;
+            const end = Math.min(assetCurrentPage * limit, assetTotal);
+            pgInfo.textContent = `${start}-${end} dari ${assetTotal} asset`;
+
+            // Disable/enable buttons
+            pgFirst.disabled = pgPrev.disabled = assetCurrentPage <= 1;
+            pgNext.disabled = pgLast.disabled = assetCurrentPage >= assetTotalPages;
+            pgFirst.style.opacity = pgPrev.style.opacity = assetCurrentPage <= 1 ? '0.4' : '1';
+            pgNext.style.opacity = pgLast.style.opacity = assetCurrentPage >= assetTotalPages ? '0.4' : '1';
+
+            // Page number buttons (show max 7)
+            pgNumbers.innerHTML = '';
+            const maxVisible = 7;
+            let startPage = Math.max(1, assetCurrentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(assetTotalPages, startPage + maxVisible - 1);
+            if (endPage - startPage < maxVisible - 1) startPage = Math.max(1, endPage - maxVisible + 1);
+
+            for (let p = startPage; p <= endPage; p++) {
+                const isActive = p === assetCurrentPage;
+                pgNumbers.innerHTML += `<button onclick="goAssetPage(${p})" style="
+                    width:36px; height:36px; border-radius:10px; border:1px solid ${isActive ? 'var(--accent)' : 'var(--glass-border)'};
+                    background:${isActive ? 'var(--accent)' : 'white'}; color:${isActive ? 'white' : 'var(--primary)'};
+                    font-weight:700; font-size:0.85rem; cursor:pointer; transition:all 0.2s ease;
+                    font-family:inherit;
+                ">${p}</button>`;
+            }
+        }
+
+        function openAddAssetModal() {
+            document.getElementById('add-asset-modal').classList.add('active');
+        }
+
+        function closeAddAssetModal() {
+            document.getElementById('add-asset-modal').classList.remove('active');
+            if (document.getElementById('section-dashboard').classList.contains('active')) {
+                setTimeout(() => document.getElementById('att-rfid')?.focus(), 100);
+            }
+        }
+
+        document.getElementById('add-asset-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const newAsset = {
+                id: document.getElementById('add-id-primary').value,
+                pcId: document.getElementById('add-pc-id').value,
+                namaStaff: document.getElementById('add-nama-staff').value,
+                location: document.getElementById('add-location').value,
+                workerType: document.getElementById('add-worker-type').value,
+                type: document.getElementById('add-type').value,
+                cpu: document.getElementById('add-cpu').value,
+                ram: document.getElementById('add-ram').value,
+                gpu: document.getElementById('add-gpu').value,
+                ssdM2: document.getElementById('add-ssd').value,
+                hdd1: document.getElementById('add-hdd').value,
+                rfid: document.getElementById('add-rfid').value,
+            };
+            try {
+                const res = await fetch('/api/assets', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newAsset)
+                });
+                if (!res.ok) throw new Error(await res.text());
+                e.target.reset();
+                closeAddAssetModal();
+                fetchData();
+                alert('Asset berhasil ditambahkan!');
+            } catch (err) {
+                alert('Gagal menambah asset: ' + err.message);
+            }
+        };
+
+        async function renderDashboardFeedback() {
+            const list = document.getElementById('dashboard-feedback-list');
+            if (!list) return;
+            try {
+                const res = await fetch('/api/feedback');
+                const approved = await res.json();
+                list.innerHTML = approved.slice(0, 3).map(f => `
+                    <div class="glass-card" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; min-height: 150px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: 700; color: var(--accent); font-size: 0.9rem;">${f.user}</span>
+                            <span style="color: #EAB308; font-weight: 800; font-size: 0.8rem;">${'★'.repeat(f.rating)}</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; font-style: italic;">"${f.comment.length > 80 ? f.comment.substring(0, 80) + '...' : f.comment}"</p>
+                    </div>
+                `).join('');
+                if (approved.length === 0) {
+                    list.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">Belum ada feedback.</p>';
+                }
+            } catch (err) {
+                console.error('Error rendering dashboard feedback:', err);
+            }
+        }
+
+        async function renderFeedback() {
+            const list = document.getElementById('feedback-list');
+            const adminTable = document.getElementById('admin-feedback-table');
+            const adminSection = document.getElementById('admin-feedback-section');
+            
+            try {
+                const res = await fetch('/api/feedback');
+                const approvedFeedbacks = await res.json();
+                
+                list.innerHTML = approvedFeedbacks.map(f => `
+                    <div class="glass-card" style="padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: 700; color: var(--accent);">${f.user}</span>
+                            <span style="color: #EAB308; font-weight: 800; font-size: 0.9rem;">${'★'.repeat(f.rating)}</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-style: italic;">"${f.comment}"</p>
+                        <div style="margin-top: auto; font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">${f.date}</div>
+                    </div>
+                `).join('');
+
+                if (approvedFeedbacks.length === 0) {
+                    list.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">Belum ada feedback yang terpilih.</p>';
+                }
+
+                if (isAdmin) {
+                    adminSection.style.display = 'block';
+                    const adminRes = await fetch('/api/feedback/admin');
+                    const allFeedbacks = await adminRes.json();
+                    
+                    adminTable.innerHTML = allFeedbacks.map(f => `
+                        <tr>
+                            <td style="font-weight:700;">${f.user}</td>
+                            <td style="max-width: 300px; font-size: 0.85rem;">${f.comment}</td>
+                            <td style="color: #EAB308;">${'★'.repeat(f.rating)}</td>
+                            <td>
+                                <span style="padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; background: ${f.status === 'APPROVED' ? '#ECFDF5' : '#FEF3C7'}; color: ${f.status === 'APPROVED' ? '#10B981' : '#D97706'};">
+                                    ${f.status}
+                                </span>
+                            </td>
+                            <td>
+                                <div style="display: flex; gap: 8px;">
+                                    ${f.status === 'PENDING' ? 
+                                        `<button class="premium-btn" style="padding: 6px 12px; font-size: 0.7rem; background: #10B981;" onclick="updateFeedbackStatus(${f.id}, 'APPROVED')">Approve</button>` :
+                                        `<button class="premium-btn" style="padding: 6px 12px; font-size: 0.7rem; background: #64748B;" onclick="updateFeedbackStatus(${f.id}, 'PENDING')">Reject</button>`
+                                    }
+                                    <button class="premium-btn" style="padding: 6px 12px; font-size: 0.7rem; background: #EF4444;" onclick="deleteFeedback(${f.id})">Del</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('');
+                } else {
+                    adminSection.style.display = 'none';
+                }
+            } catch (err) {
+                console.error('Error rendering feedback:', err);
+            }
+        }
+
+        function openFeedbackModal() {
+            document.getElementById('feedback-modal').classList.add('active');
+        }
+
+        function closeFeedbackModal() {
+            document.getElementById('feedback-modal').classList.remove('active');
+            if (document.getElementById('section-dashboard').classList.contains('active')) {
+                setTimeout(() => document.getElementById('att-rfid')?.focus(), 100);
+            }
+        }
+
+        document.getElementById('feedback-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const data = {
+                user: document.getElementById('feedback-user').value,
+                rating: parseInt(document.getElementById('feedback-rating').value),
+                comment: document.getElementById('feedback-comment').value
+            };
+            try {
+                const res = await fetch('/api/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (res.ok) {
+                    alert('Terima kasih! Feedback Anda telah terkirim dan akan dimoderasi oleh admin.');
+                    e.target.reset();
+                    closeFeedbackModal();
+                    fetchData();
+                }
+            } catch (err) {
+                alert('Gagal mengirim feedback');
+            }
+        };
+
+        async function updateFeedbackStatus(id, status) {
+            try {
+                await fetch(`/api/feedback/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status })
+                });
+                renderFeedback();
+            } catch (err) {
+                alert('Gagal update status');
+            }
+        }
+
+        async function deleteFeedback(id) {
+            if (!confirm('Hapus feedback ini?')) return;
+            try {
+                await fetch(`/api/feedback/${id}`, { method: 'DELETE' });
+                renderFeedback();
+            } catch (err) {
+                alert('Gagal hapus feedback');
+            }
+        }
+
+        // isAdmin moved to top
+
+        function toggleAdmin() {
+            console.log("toggleAdmin called. Current isAdmin:", isAdmin);
+            if (!isAdmin) {
+                const pass = prompt("Masukkan Password Admin:");
+                console.log("Password entered:", pass);
+                if (pass === "2415") {
+                    isAdmin = true;
+                    document.getElementById('admin-login-btn').innerText = "Admin: Online";
+                    document.getElementById('admin-login-btn').style.background = "var(--accent)";
+                    document.getElementById('admin-login-btn').style.color = "white";
+                    if (document.getElementById('asset-admin-btns')) document.getElementById('asset-admin-btns').style.display = 'flex';
+                    if (document.getElementById('dashboard-attendance-log')) document.getElementById('dashboard-attendance-log').style.display = 'block';
+                    if (document.getElementById('add-staff-btn')) document.getElementById('add-staff-btn').style.display = 'block';
+                    if (document.getElementById('staff-action-th')) document.getElementById('staff-action-th').style.display = 'table-cell';
+                    if (document.getElementById('asset-action-th')) document.getElementById('asset-action-th').style.display = 'table-cell';
+                    document.querySelectorAll('.admin-only').forEach(el => el.style.display = el.tagName === 'TH' || el.tagName === 'TD' ? 'table-cell' : 'block');
+                    fetchData();
+                    if (document.getElementById('section-settings').classList.contains('active')) switchSection('settings');
+                    alert("Berhasil Login sebagai Admin!");
+                } else {
+                    alert("Password Salah!");
+                }
+            } else {
+                isAdmin = false;
+                document.getElementById('admin-login-btn').innerText = "Login Admin";
+                document.getElementById('admin-login-btn').style.background = "transparent";
+                document.getElementById('admin-login-btn').style.color = "var(--accent)";
+                if (document.getElementById('asset-admin-btns')) document.getElementById('asset-admin-btns').style.display = 'none';
+                if (document.getElementById('add-staff-btn')) document.getElementById('add-staff-btn').style.display = 'none';
+                if (document.getElementById('staff-action-th')) document.getElementById('staff-action-th').style.display = 'none';
+                if (document.getElementById('asset-action-th')) document.getElementById('asset-action-th').style.display = 'none';
+                document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+                fetchData();
+                alert("Logout Admin.");
+            }
+        }
+
+
+        function openEditModal(assetId) {
+            if (!isAdmin) { alert('Akses ditolak. Harap login admin terlebih dahulu.'); return; }
+            // Check paginated page data first, then fall back to all assets
+            const asset = assetPage.find(a => a.id === assetId) || assets.find(a => a.id === assetId);
+            if (!asset) return;
+            document.getElementById('edit-asset-id').value = asset.id;
+            document.getElementById('edit-pc-id').value = asset.pcId || '';
+            document.getElementById('edit-nama-staff').value = asset.namaStaff || asset.user || '';
+            document.getElementById('edit-location').value = asset.location || 'Semarang';
+            document.getElementById('edit-worker-type').value = asset.workerType || 'Staff';
+            document.getElementById('edit-type').value = asset.type || '';
+            document.getElementById('edit-cpu').value = asset.cpu || '';
+            document.getElementById('edit-ram').value = asset.ram || '';
+            document.getElementById('edit-gpu').value = asset.gpu || '';
+            document.getElementById('edit-ssd').value = asset.ssdM2 || '';
+            document.getElementById('edit-hdd').value = asset.hdd1 || '';
+            document.getElementById('edit-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('edit-modal').classList.remove('active');
+            if (document.getElementById('section-dashboard').classList.contains('active')) {
+                setTimeout(() => document.getElementById('att-rfid')?.focus(), 100);
+            }
+        }
+
+        document.getElementById('edit-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const assetId = document.getElementById('edit-asset-id').value;
+            const updatedData = {
+                pcId: document.getElementById('edit-pc-id').value,
+                namaStaff: document.getElementById('edit-nama-staff').value,
+                location: document.getElementById('edit-location').value,
+                workerType: document.getElementById('edit-worker-type').value,
+                type: document.getElementById('edit-type').value,
+                cpu: document.getElementById('edit-cpu').value,
+                ram: document.getElementById('edit-ram').value,
+                gpu: document.getElementById('edit-gpu').value,
+                ssdM2: document.getElementById('edit-ssd').value,
+                hdd1: document.getElementById('edit-hdd').value,
+            };
+            try {
+                const res = await fetch(`/api/assets/${assetId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedData)
+                });
+                if (!res.ok) throw new Error(await res.text());
+                closeModal();
+                fetchData();
+                alert('Asset berhasil diupdate!');
+            } catch (err) {
+                alert('Gagal update asset: ' + err.message);
+            }
+        };
+
+        async function resetDatabase() {
+            const code = prompt("⚠️ PERINGATAN: Semua data akan dihapus permanen!\nMasukkan kode reset:");
+            if (!code) return;
+            
+            if (code === '12345') {
+                if (confirm("Anda yakin ingin menghapus SELURUH data database? Tindakan ini tidak bisa dibatalkan.")) {
+                    try {
+                        const res = await fetch('/api/admin/reset-db', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ code })
+                        });
+                        const result = await res.json();
+                        if (res.ok) {
+                            alert(result.message);
+                            location.reload(); // Reload to refresh all stats and lists
+                        } else {
+                            alert('Gagal: ' + result.error);
+                        }
+                    } catch (err) {
+                        alert('Gagal menghubungi server: ' + err.message);
+                    }
+                }
+            } else {
+                alert("Kode reset salah!");
+            }
+        }
+
+        async function deleteAsset(assetId) {
+            if (!confirm('Yakin mau hapus asset ini?')) return;
+            try {
+                const res = await fetch(`/api/assets/${assetId}`, { method: 'DELETE' });
+                if (res.ok) { fetchData(); alert('Asset berhasil dihapus!'); }
+                else throw new Error('Gagal hapus di server');
+            } catch (err) { alert('Gagal hapus asset: ' + err.message); }
+        }
+
+        function openLocationModal() {
+            document.getElementById('location-modal').classList.add('active');
+        }
+
+        function closeLocationModal() {
+            document.getElementById('location-modal').classList.remove('active');
+            if (document.getElementById('section-dashboard').classList.contains('active')) {
+                setTimeout(() => document.getElementById('att-rfid')?.focus(), 100);
+            }
+        }
+
+        function selectLocation(loc) {
+            closeLocationModal();
+            document.getElementById('ticket-location').value = loc;
+            document.getElementById('ticket-modal-title').innerText = `Buat Tiket Baru - Kantor ${loc}`;
+            
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            const timeStr = now.toTimeString().split(' ')[0].substring(0, 5);
+            document.getElementById('ticket-date-display').value = `${dateStr} ${timeStr}`;
+            
+            document.getElementById('ticket-modal').classList.add('active');
+        }
+
+        function closeTicketModal() {
+            document.getElementById('ticket-modal').classList.remove('active');
+            if (document.getElementById('section-dashboard').classList.contains('active')) {
+                setTimeout(() => document.getElementById('att-rfid')?.focus(), 100);
+            }
+        }
+
+        document.getElementById('ticket-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const newTicket = {
+                id: `T-${Date.now().toString().slice(-4)}`,
+                issue: document.getElementById('ticket-category').value,
+                desc: document.getElementById('ticket-desc').value,
+                location: document.getElementById('ticket-location').value,
+                user: document.getElementById('ticket-user').value,
+                date: document.getElementById('ticket-date-display').value,
+                priority: document.getElementById('ticket-priority').value,
+                status: "OPEN"
+            };
+            
+            try {
+                await fetch('/api/tickets', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newTicket)
+                });
+                e.target.reset();
+                closeTicketModal();
+                fetchData();
+                alert('Tiket berhasil dikirim!');
+            } catch (err) {
+                alert('Gagal mengirim tiket: ' + err.message);
+            }
+        };
+
+
+
+        function openTicketEditModal(ticketId) {
+            const ticket = tickets.find(t => t.id === ticketId);
+            document.getElementById('edit-ticket-index').value = ticketId;
+            document.getElementById('edit-ticket-status').value = ticket.status;
+            document.getElementById('edit-ticket-pic').value = ticket.pic || "";
+            document.getElementById('edit-ticket-perbaikan').value = ticket.perbaikan || "";
+            document.getElementById('ticket-edit-modal').classList.add('active');
+        }
+
+        function closeTicketEditModal() {
+            document.getElementById('ticket-edit-modal').classList.remove('active');
+            if (document.getElementById('section-dashboard').classList.contains('active')) {
+                setTimeout(() => document.getElementById('att-rfid')?.focus(), 100);
+            }
+        }
+
+        async function deleteTicket(ticketId) {
+            if (confirm("yakin mau di hapus ni admin?")) {
+                try {
+                    const res = await fetch(`/api/tickets/${ticketId}`, {
+                        method: 'DELETE'
+                    });
+                    if (res.ok) {
+                        fetchData();
+                        alert('Tiket berhasil dihapus!');
+                    } else {
+                        throw new Error('Gagal menghapus di server');
+                    }
+                } catch (err) {
+                    alert('Gagal menghapus tiket: ' + err.message);
+                }
+            }
+        }
+
+
+        document.getElementById('ticket-edit-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const ticketId = document.getElementById('edit-ticket-index').value;
+            const updatedData = {
+                status: document.getElementById('edit-ticket-status').value,
+                pic: document.getElementById('edit-ticket-pic').value,
+                perbaikan: document.getElementById('edit-ticket-perbaikan').value
+            };
+            
+            try {
+                await fetch(`/api/tickets/${ticketId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedData)
+                });
+                closeTicketEditModal();
+                fetchData();
+                alert('Tiket berhasil diupdate!');
+            } catch (err) {
+                alert('Gagal update tiket: ' + err.message);
+            }
+        };
+
+        function handleExcelUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                const jsonData = XLSX.utils.sheet_to_json(firstSheet, { defval: '' });
+
+                if (jsonData.length === 0) { alert('File Excel kosong!'); return; }
+
+                // Ambil jumlah asset saat ini dari server untuk auto-ID yang akurat
+                let startNum = 1;
+                try {
+                    const dbAssets = await fetch('/api/assets').then(r => r.json());
+                    startNum = (dbAssets.pagination ? dbAssets.pagination.total : dbAssets.length) + 1;
+                } catch { startNum = (typeof assetTotal !== 'undefined' ? assetTotal : 0) + 1; }
+
+                const toStr = (v) => (v === null || v === undefined) ? '' : String(v).trim();
+
+                let successCount = 0;
+                let failCount = 0;
+
+                for (const row of jsonData) {
+                    const rk = Object.keys(row);
+
+                    // ID primary selalu dibuat otomatis oleh sistem
+                    const id = String(startNum).padStart(3, '0');
+
+                    // PC ID — baca dari kolom 'PC ID' kalau ada, kalau tidak pakai urutan
+                    const pcId = toStr(row['PC ID'] || row['PC Id'] || row[rk[0]] || '');
+
+                    const newAsset = {
+                        id,
+                        pcId,
+                        namaStaff:  toStr(row['Nama Staff'] || row['IDN Staff'] || row['Nama'] || row['User'] || row[rk[1]] || ''),
+                        location:   toStr(row['Lokasi'] || row['Location'] || '') || 'Semarang',
+                        workerType: toStr(row['Worker Type'] || row['Worker_Type'] || '') || 'Staff',
+                        type:       toStr(row['Type'] || ''),
+                        cpu:        toStr(row['CPU'] || ''),
+                        ram:        toStr(row['RAM'] || ''),
+                        gpu:        toStr(row['GPU'] || ''),
+                        ssdM2:      toStr(row['SSD M2'] || row['SSD M.2'] || row['SSD'] || ''),
+                        hdd1:       toStr(row['HDD 1'] || row['HDD1'] || row['HDD'] || '') || '-',
+                    };
+
+                    startNum++;
+                    try {
+                        const res = await fetch('/api/assets', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(newAsset)
+                        });
+                        if (res.ok) {
+                            successCount++;
+                        } else {
+                            const msg = await res.text();
+                            console.warn('[Excel Import] Gagal ID', id, ':', msg);
+                            failCount++;
+                        }
+                    } catch (err) {
+                        console.error('[Excel Import] Error row ID', id, err);
+                        failCount++;
+                    }
+                }
+                event.target.value = '';
+                fetchData();
+                alert(`Import selesai!\n✅ Berhasil: ${successCount}\n❌ Gagal/Skip: ${failCount}\n\n(Buka F12 → Console untuk lihat detail kolom)`);
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        // --- Attendance Functions ---
+        async function initAttendance() {
+            renderAttendanceLog();
+            
+            const rfidInput = document.getElementById('att-rfid');
+            if (rfidInput) {
+                rfidInput.focus();
+                rfidInput.onkeydown = (e) => {
+                    if (e.key === 'Enter') {
+                        const rfid = rfidInput.value.trim();
+                        if (rfid) submitRFIDAttendance(rfid);
+                        rfidInput.value = '';
+                    }
+                };
+            }
+        }
+
+        async function submitRFIDAttendance(rfid) {
+            const resultDiv = document.getElementById('att-result');
+            resultDiv.style.display = 'none';
+
+            try {
+                const res = await fetch('/api/attendance', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ rfid })
+                });
+                const result = await res.json();
+
+                if (res.ok) {
+                    const data = result.data;
+                    const typeColor = data.type === 'MASUK' ? '#10B981' : '#EF4444';
+                    resultDiv.innerHTML = `
+                        <div style="background: #F0FDF4; border: 2px solid #10B981; padding: 20px; border-radius: 16px;">
+                            <h2 style="color: ${typeColor}; margin-bottom: 10px;">✅ Absen ${data.type} Berhasil!</h2>
+                            <p style="font-weight: 700; font-size: 1.2rem; margin-bottom: 4px;">${data.name}</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">${data.workerType}</p>
+                            <div style="font-size: 0.85rem; background: white; display: inline-block; padding: 6px 12px; border-radius: 8px; font-weight: 600;">
+                                🕒 ${data.time}
+                            </div>
+                        </div>
+                    `;
+                    renderAttendanceLog();
+                } else {
+                    resultDiv.innerHTML = `
+                        <div style="background: #FEF2F2; border: 2px solid #EF4444; padding: 20px; border-radius: 16px;">
+                            <h3 style="color: #EF4444; margin-bottom: 8px;">❌ ${result.error === 'Anda sudah absen. Tunggu 1 jam untuk tap kembali.' ? 'Gagal' : 'Error'}</h3>
+                            <p style="font-weight: 600; color: #7F1D1D;">${result.error}</p>
+                        </div>
+                    `;
+                }
+                resultDiv.style.display = 'block';
+                
+                // Hide result after 5 seconds
+                setTimeout(() => { resultDiv.style.display = 'none'; }, 5000);
+
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        function openStaffModal(id = null) {
+            const modal = document.getElementById('staff-modal');
+            const form = document.getElementById('staff-form');
+            form.reset();
+            document.getElementById('staff-id').value = '';
+            document.getElementById('staff-modal-title').innerText = 'Tambah Staff Baru';
+
+            if (id) {
+                const s = staff.find(x => x.id === id);
+                if (s) {
+                    document.getElementById('staff-id').value = s.id;
+                    document.getElementById('staff-rfid').value = s.rfid;
+                    document.getElementById('staff-name').value = s.name;
+                    document.getElementById('staff-location').value = s.location || 'Semarang';
+                    document.getElementById('staff-worker-type').value = s.worker_type;
+                    document.getElementById('staff-period').value = s.employment_period || '';
+                    document.getElementById('staff-modal-title').innerText = 'Edit Data Staff';
+                }
+            }
+            modal.classList.add('active');
+        }
+
+        function closeStaffModal() {
+            document.getElementById('staff-modal').classList.remove('active');
+            if (document.getElementById('section-dashboard').classList.contains('active')) {
+                setTimeout(() => document.getElementById('att-rfid')?.focus(), 100);
+            }
+        }
+
+        document.getElementById('staff-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('staff-id').value;
+            const data = {
+                rfid: document.getElementById('staff-rfid').value,
+                name: document.getElementById('staff-name').value,
+                location: document.getElementById('staff-location').value,
+                worker_type: document.getElementById('staff-worker-type').value,
+                employment_period: document.getElementById('staff-period').value
+            };
+
+            const method = id ? 'PUT' : 'POST';
+            const url = id ? `/api/staff/${id}` : '/api/staff';
+
+            try {
+                const res = await fetch(url, {
+                    method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (res.ok) {
+                    closeStaffModal();
+                    fetchData();
+                    alert('Data staff berhasil disimpan!');
+                } else {
+                    const errData = await res.json();
+                    alert('Gagal menyimpan data staff: ' + (errData.error || 'Unknown Error'));
+                }
+            } catch (err) { alert('Error: ' + err.message); }
+        };
+
+        async function deleteStaff(id) {
+            if (!confirm('Hapus data staff ini?')) return;
+            try {
+                const res = await fetch(`/api/staff/${id}`, { method: 'DELETE' });
+                if (res.ok) { fetchData(); alert('Data staff dihapus!'); }
+            } catch (err) { alert('Error: ' + err.message); }
+        }
+
+        function renderStaff() {
+            const tbody = document.getElementById('staff-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = staff.map(s => `
+                <tr>
+                    <td style="font-family:monospace; font-weight:700; color:var(--accent);">${s.rfid}</td>
+                    <td style="font-weight:700;">${s.name}</td>
+                    <td><span style="padding:3px 10px; border-radius:8px; font-size:0.8rem; font-weight:700; background:${s.location==='Makassar'?'#FEE2E2':'#DBEAFE'}; color:${s.location==='Makassar'?'#EF4444':'#2563EB'};">${s.location || 'Semarang'}</span></td>
+                    <td><span style="padding:3px 10px; border-radius:8px; font-size:0.8rem; font-weight:600; background:#F0FDF4; color:#16A34A;">${s.worker_type}</span></td>
+                    <td>${s.employment_period || '-'}</td>
+                    <td style="display: ${isAdmin ? 'table-cell' : 'none'};">
+                        <div style="display:flex; gap:8px;">
+                            <button class="premium-btn" style="padding:6px 12px; font-size:0.7rem;" onclick="openStaffModal(${s.id})">Edit</button>
+                            <button class="premium-btn" style="padding:6px 12px; font-size:0.7rem; background:#EF4444;" onclick="deleteStaff(${s.id})">Del</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        async function renderAttendanceLog() {
+            renderStaff(); // Also update staff table when log is rendered (both are admin only)
+            const tbody = document.getElementById('att-log-table');
+            if (!tbody) return; // In case we are not on the dashboard/attendance log page
+            try {
+                const res = await fetch('/api/attendance');
+                const data = await res.json();
+                tbody.innerHTML = data.map(att => {
+                    const typeColor = att.type === 'MASUK' ? '#10B981' : '#EF4444';
+                    return `
+                        <tr>
+                            <td style="font-weight:700;">${att.user}</td>
+                            <td><span style="padding:3px 10px; border-radius:8px; font-size:0.8rem; font-weight:600; background:#F0FDF4; color:#16A34A;">${att.worker_type}</span></td>
+                            <td><span style="padding:3px 10px; border-radius:8px; font-size:0.8rem; font-weight:700; background:${att.location==='Makassar'?'#FEE2E2':'#DBEAFE'}; color:${att.location==='Makassar'?'#EF4444':'#2563EB'};">${att.location || '-'}</span></td>
+                            <td><span style="padding:4px 10px; border-radius:8px; font-size:0.75rem; font-weight:700; background:${typeColor}20; color:${typeColor};">${att.type}</span></td>
+                            <td style="font-size:0.8rem;">${new Date(att.timestamp).toLocaleString('id-ID')}</td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (err) {
+                console.error('Error rendering attendance log:', err);
+            }
+        }
+
+        function viewFullPhoto(src) {
+            const win = window.open();
+            win.document.write(`<img src="${src}" style="max-width:100%;">`);
+        }
+
+        async function renderAttendanceReport() {
+            const reportDiv = document.getElementById('printable-report');
+            reportDiv.innerHTML = '<p style="text-align:center; padding:20px;">Memuat data...</p>';
+            
+            const monthVal = document.getElementById('report-month').value;
+            const locFilter = document.getElementById('report-location').value;
+            let typeFilter = document.getElementById('report-worker-type').value;
+
+            if (!monthVal) return;
+            const [yearStr, monthStr] = monthVal.split('-');
+            const year = parseInt(yearStr);
+            const month = parseInt(monthStr) - 1; // 0-indexed
+
+            try {
+                const resAtt = await fetch('/api/attendance');
+                const allAtt = await resAtt.json();
+
+                const resStaff = await fetch('/api/staff');
+                const allStaff = await resStaff.json();
+
+                // If typeFilter is 'PC Render', match 'PC Render' or similar if needed.
+                const filteredStaff = allStaff.filter(s => {
+                    const sLoc = (s.location || 'Semarang').toLowerCase();
+                    const sType = (s.worker_type || '').toLowerCase();
+                    const fLoc = locFilter.toLowerCase();
+                    const fType = typeFilter.toLowerCase();
+                    
+                    const matchLoc = sLoc === fLoc;
+                    const matchType = (sType === fType) || (typeFilter === 'PC Render' && sType.includes('render'));
+                    
+                    return matchLoc && matchType;
+                });
+
+                if (filteredStaff.length === 0) {
+                    reportDiv.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-muted);">Tidak ada staff yang sesuai dengan filter.</p>';
+                    return;
+                }
+
+                const attByDateUser = {};
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                for (let d = 1; d <= daysInMonth; d++) {
+                    attByDateUser[d] = {};
+                    filteredStaff.forEach(s => {
+                        attByDateUser[d][s.rfid] = { in: '', out: '' };
+                    });
+                }
+
+                allAtt.forEach(att => {
+                    const date = new Date(att.timestamp);
+                    if (date.getFullYear() === year && date.getMonth() === month) {
+                        const day = date.getDate();
+                        const timeStr = String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
+                        
+                        if (filteredStaff.some(s => s.rfid === att.rfid)) {
+                            if (att.type === 'MASUK') {
+                                if (!attByDateUser[day][att.rfid].in || timeStr < attByDateUser[day][att.rfid].in) {
+                                    attByDateUser[day][att.rfid].in = timeStr;
+                                }
+                            } else if (att.type === 'PULANG') {
+                                if (!attByDateUser[day][att.rfid].out || timeStr > attByDateUser[day][att.rfid].out) {
+                                    attByDateUser[day][att.rfid].out = timeStr;
+                                }
+                            }
+                        }
+                    }
+                });
+
+                const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                
+                let html = '<h2 style="text-align:center; margin-bottom:16px;">Laporan Absensi - ' + monthVal + '<br><span style="font-size:1rem; color:var(--text-muted);">' + locFilter + ' | ' + typeFilter + '</span></h2>';
+                html += '<table class="report-table">';
+                
+                html += '<thead><tr><th rowspan="2" style="width:40px;">Date</th><th rowspan="2" style="width:80px;">Day</th>';
+                filteredStaff.forEach(s => {
+                    html += '<th colspan="2">' + s.name.toUpperCase() + '</th>';
+                });
+                html += '</tr><tr>';
+                filteredStaff.forEach(() => {
+                    html += '<th>In</th><th>Out</th>';
+                });
+                html += '</tr></thead><tbody>';
+
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const currentDt = new Date(year, month, d);
+                    const dayName = daysOfWeek[currentDt.getDay()];
+                    const isWeekend = (currentDt.getDay() === 0 || currentDt.getDay() === 6);
+                    
+                    html += '<tr' + (isWeekend ? ' class="weekend"' : '') + '>';
+                    html += '<td>' + d + '</td><td>' + dayName + '</td>';
+                    
+                    filteredStaff.forEach(s => {
+                        const inTime = attByDateUser[d][s.rfid].in;
+                        const outTime = attByDateUser[d][s.rfid].out;
+                        
+                        html += '<td' + (inTime ? ' class="in-time"' : '') + '>' + inTime + '</td>';
+                        html += '<td' + (outTime ? ' class="out-time"' : '') + '>' + outTime + '</td>';
+                    });
+                    
+                    html += '</tr>';
+                }
+                
+                html += '</tbody></table>';
+                reportDiv.innerHTML = html;
+
+            } catch (err) {
+                console.error(err);
+                reportDiv.innerHTML = '<p style="text-align:center; color:#EF4444; padding:20px;">Error memuat data laporan.</p>';
+            }
+        }
+
+        function printAttendanceReport() {
+            window.print();
+        }
+
+        window.onload = () => {
+            fetchData();
+        };
+    </script>
+</body>
+</html>
