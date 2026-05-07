@@ -1,21 +1,21 @@
 {
-    "name": "esdruparaya",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "type": "commonjs",
-    "dependencies": {
-        "dotenv": "^17.4.2",
-        "express": "^5.2.1",
-        "pg": "^8.20.0",
-        "multer": "^1.19.0",
-        "xlsx": "^0.18.5"
-    }
+  "name": "esdruparaya",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@vercel/node": "^3.2.26",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^1.19.0",
+    "pg": "^8.20.0",
+    "xlsx": "^0.18.5"
+  }
 }
