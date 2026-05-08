@@ -646,6 +646,21 @@ app.post('/api/admin/reset-db', async (req, res) => {
     }
 });
 
+// ==================== TEST ROUTE ====================
+app.get('/api/test-connection', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT NOW() as time');
+        res.json({ 
+            success: true, 
+            message: 'Koneksi ke Neon Tech BERHASIL!',
+            db_time: result.rows[0].time,
+            env: process.env.DATABASE_URL ? 'URL Ditemukan' : 'URL Hilang'
+        });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
 // ==================== ERROR HANDLING ====================
 app.use((err, req, res, next) => {
     console.error('SERVER ERROR:', err);
