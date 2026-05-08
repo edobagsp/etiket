@@ -12,10 +12,10 @@
   "type": "commonjs",
   "dependencies": {
     "@vercel/node": "^3.2.26",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "multer": "^1.19.0",
-    "pg": "^8.20.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.11.3",
     "xlsx": "^0.18.5"
   }
 }
